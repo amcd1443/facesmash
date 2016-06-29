@@ -1,0 +1,105 @@
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>jQuery Example</title>
+  <script>
+		$(document).ready(function() { //start jquery
+
+		  $.ajaxSetup({ cache: true });
+		  $.getScript('//connect.facebook.net/en_US/sdk.js', facebooksdkLoadedFunction); //end facebook
+		  $("#logoutbutton").click(logoutClickFunction);
+		  $("#loginbutton").click(loginClickFunction);
+
+		}); //end jquery
+
+		var myFBuid = "";
+
+		function facebooksdkLoadedFunction() {
+		    
+		    FB.init({appId: '252709331775739',version: 'v2.5'}); 
+
+			FB.getLoginStatus(handleFacebookResponse); 	
+		}
+
+		function handleFacebookResponse(response) {
+			if (response.status === 'connected') {
+			    console.log('Logged in.');
+			    removeLoginButton();
+			    loadPosts()
+			  }
+			  else {
+			  		console.log("not logged in")
+			  		$("#loginbutton").show();
+			  }
+
+		}
+
+		function removeLoginButton() {
+			$("#loginbutton").hide();
+		}
+
+		function logoutClickFunction() {
+			 FB.logout(handleFacebookResponse);
+		}
+
+		function loginClickFunction() {
+			 FB.login(handleFacebookResponse, {scope: "user_posts"});
+		}
+
+		// function loadUser() {
+		// 	var fburl = "/me"
+		// 	FB.api(fburl, function (response) {
+		// 		myFBuid = response.id;
+		// 		loadFriendsList(myFBuid);
+		// 	});
+		// }
+
+		function loadPosts(whichUserID) {
+			var fburl =  "/me/posts";
+			console.log(fburl)
+			FB.api (fburl, function (response) {
+			      if (response && !response.error) {
+			        /* handle the result */
+			        var posts = response.data;
+			        var postsLength = posts.length
+			        console.log("posts", posts.length);
+			        console.log(posts);
+
+			        for (var i = 0; i < postsLength; i++) {
+			        	var post = posts[i];
+			        	var postText = post.story;
+			        	var html = "<li>" + postText + "</li>";
+			        	$("#friendslist").append(html);
+			        	console.log("post");
+			        }
+				}
+    		});
+		}
+
+
+  </script>
+
+  
+</head>
+<body>
+<div id="loginbutton">login</div>
+
+<div id="logoutbutton">logout</div>
+
+<ul id="friendslist"></ul>
+
+
+
+</body>
+
+</html>
+
+
+
+<!-- 
+
+hoemwrworkv = the ones that are undefinded, why are they undefinded, and then change it to something else that is more descriptive, about the post, title, time, date, something.
+
+
+-->

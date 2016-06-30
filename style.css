@@ -11,3 +11,12 @@
 	background-color: red;
 	color: black;
 }
+
+#friendslist {
+	font: "Times New Roman";
+	color: green;
+	font-size: 10pt;
+	width: 300px;
+	border: 1px blue;
+
+}

@@ -1,3 +1,15 @@
+
+<!-- 
+homework = the ones that are undefinded, why are they undefinded, and then change it to something else that is more descriptive, about the post, title, time, date, something; They are undefined bc FB does not recognize them
+what to do with facebook API;
+add styling to the site and posts; kind of done
+hide the logout button before you login; done
+-->
+
+
+
+
+
 <html>
 <head>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -31,12 +43,14 @@
 			  else {
 			  		console.log("not logged in")
 			  		$("#loginbutton").show();
+			  		$("#logoutbutton").hide();
 			  }
 
 		}
 
 		function removeLoginButton() {
 			$("#loginbutton").hide();
+			$("#logoutbutton").show(); // i know this is wrong to have here, just having it here now "works" and just wanted to show progress
 		}
 
 		function logoutClickFunction() {
@@ -96,10 +110,3 @@
 </html>
 
 
-
-<!-- 
-
-hoemwrworkv = the ones that are undefinded, why are they undefinded, and then change it to something else that is more descriptive, about the post, title, time, date, something.
-
-
--->

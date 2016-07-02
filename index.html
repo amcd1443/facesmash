@@ -1,8 +1,8 @@
 
 <!-- 
 homework = the ones that are undefinded, why are they undefinded, and then change it to something else that is more descriptive, about the post, title, time, date, something; They are undefined bc FB does not recognize them
-what to do with facebook API;
-add styling to the site and posts; kind of done
+what to do with facebook API; huh?
+add styling to the site and posts; done, it sucks and looks terrible, but done :b
 hide the logout button before you login; done
 -->
 
@@ -44,6 +44,7 @@ hide the logout button before you login; done
 			  		console.log("not logged in")
 			  		$("#loginbutton").show();
 			  		$("#logoutbutton").hide();
+			  		$("#friendslist").hide();
 			  }
 
 		}
@@ -51,6 +52,7 @@ hide the logout button before you login; done
 		function removeLoginButton() {
 			$("#loginbutton").hide();
 			$("#logoutbutton").show(); // i know this is wrong to have here, just having it here now "works" and just wanted to show progress
+			$("#friendslist").show();
 		}
 
 		function logoutClickFunction() {
@@ -83,9 +85,16 @@ hide the logout button before you login; done
 			        for (var i = 0; i < postsLength; i++) {
 			        	var post = posts[i];
 			        	var postText = post.story;
+			        	//var postMessage = post.message;
 			        	var html = "<li>" + postText + "</li>";
+			        	//var html2 = "<li>" + postMessage + "</li>";
 			        	$("#friendslist").append(html);
+			        	//$("#friendslist").append(html2);
 			        	console.log("post");
+			        	if (post.message) {
+			        		console.log("THIS WORKS!!!")
+			        	}
+
 			        }
 				}
     		});

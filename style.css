@@ -15,8 +15,10 @@
 #friendslist {
 	font: "Times New Roman";
 	color: green;
-	font-size: 10pt;
+	font-size: 15pt;
 	width: 300px;
-	border: 1px blue;
+	border-style: solid;
+    border-width: 1px 3px 3px 3px;
+    border-color: red;
 
 }
